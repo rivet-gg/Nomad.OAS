@@ -1,5 +1,9 @@
 #!/bin/bash
 
+    # "validate": "swagger-cli validate swagger/swagger.yaml",
+    # "clean": "rm -r dist/*",
+    # "bundle": "swagger-cli bundle swagger/swagger.yaml -o dist/swagger.json",
+
 npx swagger-cli bundle swagger/swagger.yaml -o dist/swagger.json
 
 docker run \
