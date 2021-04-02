@@ -1,18 +1,15 @@
 # Nomad.OAS
-
-[![Build Status](https://dev.azure.com/FuturistiCoder/Nomad.OAS/_apis/build/status/FuturistiCoder.Nomad.OAS?branchName=master)](https://dev.azure.com/FuturistiCoder/Nomad.OAS/_build/latest?definitionId=12&branchName=master)
-
----
-
-HashiCorp Nomad open api specification
+HashiCorp Nomad v0.11 OpenAPI specification.
 
 ## Client libraries (generated)
 
-### .Net
+### Rust
 
-- Nomad.Client [![NuGet Status](https://badgen.net/nuget/v/nomad.client)](https://www.nuget.org/packages/Nomad.Client)
+TODO: Link to package
 
-client library in other languages can be generated
+### Adding your own
+
+TODO: Document this
 
 ## endpoints
 
