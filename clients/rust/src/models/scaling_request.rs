@@ -31,7 +31,7 @@ impl ScalingRequest {
     pub fn new(target: Option<::std::collections::HashMap<String, String>>) -> ScalingRequest {
         ScalingRequest {
             count: None,
-            target,
+            target: None,
             reason: None,
             error: None,
             meta: None,

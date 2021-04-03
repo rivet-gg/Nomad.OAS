@@ -24,7 +24,7 @@ pub struct JobPlanRequest {
 impl JobPlanRequest {
     pub fn new(job: Option<crate::models::Job>) -> JobPlanRequest {
         JobPlanRequest {
-            job: Box::new(job),
+            job: None,
             diff: None,
             policy_override: None,
         }

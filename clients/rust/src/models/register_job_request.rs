@@ -26,7 +26,7 @@ pub struct RegisterJobRequest {
 impl RegisterJobRequest {
     pub fn new(job: Option<crate::models::Job>) -> RegisterJobRequest {
         RegisterJobRequest {
-            job: Box::new(job),
+            job: None,
             enforce_index: None,
             job_modify_index: None,
             policy_override: None,
