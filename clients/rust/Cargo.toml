@@ -1,8 +1,15 @@
 [package]
 name = "nomad-client"
-version = "1.0.0"
-authors = ["OpenAPI Generator team and contributors"]
+version = "0.0.1"
+description = "A Rust client for HashiCorp Nomad's API."
+homepage = "https://github.com/rivet-gg/Nomad.OAS/tree/master/client/rust"
+repository = "https://github.com/rivet-gg/Nomad.OAS"
+keywords = ["nomad"]
+categories = ["api-bindings"]
+authors = ["FuturistiCoder <FuturistiCoder@gmail.com>"]
+license = "MIT"
 edition = "2018"
+readme = "README.md"
 
 [dependencies]
 serde = "^1.0"
