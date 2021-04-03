@@ -7,11 +7,10 @@ HashiCorp Nomad v0.11 OpenAPI specification.
 
 TODO: Link to package
 
-### Adding your own
+### Adding your own client
+In `Makefile`: Add your client to `target`. Then add a target for your client in the `clients` folder that calls `GEN_CLI_TEMPLATE`.
 
-TODO: Document this
-
-## endpoints
+## Endpoints
 
 | Api               | Implement | Comment        |
 |-------------------|-----------|----------------|
