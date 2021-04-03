@@ -14,7 +14,6 @@ additionalProperties:
     - api
     - client
     - openapi
-    - swagger
   packageCategories: 
     - api-bindings
   packageAuthors: 

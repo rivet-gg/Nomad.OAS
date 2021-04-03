@@ -24,9 +24,13 @@ all: $(targets)
 clients/rust: bundle
 	$(GEN_CLI_TEMPLATE) --config /local/configs/rust.yaml
 
-.PHONY: check
-check: clients/rust
+.PHONY: clients/rust/check
+clients/rust/check: clients/rust
 	cd clients/rust && cargo check
+
+.PHONY: clients/rust/publish
+clients/rust/publish: clients/rust/check
+	cd clients/rust && cargo publish
 
 .PHONY: bundle
 bundle: validate dist/swagger.json

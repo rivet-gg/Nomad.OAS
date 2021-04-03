@@ -10,7 +10,6 @@ keywords = [
     "api",
     "client",
     "openapi",
-    "swagger",
 ]
 categories = [
     "api-bindings",
