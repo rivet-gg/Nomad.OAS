@@ -5,6 +5,8 @@ info:
   description: Nomad OpenApi specification
   license:
     name: MIT
+servers:
+  - url: http://localhost:4646/v1
 paths:
   # agent
   /agent/force-leave:

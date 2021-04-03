@@ -1,6 +1,6 @@
 # \ClientApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:4646/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
