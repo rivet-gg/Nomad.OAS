@@ -1,8 +1,8 @@
 # nomad-client
 
-[![badge-crates](https://img.shields.io/crates/v/nomad-client?style=flat-square)](https://crates.io/crates/nomad-client)
-[![badge-docs](https://img.shields.io/docsrs/nomad-client?style=flat-square)](https://docs.rs/nomad-client)
-![badge-license](https://img.shields.io/crates/l/nomad-client?style=flat-square)
+[![Crates.io](https://img.shields.io/crates/v/nomad-client?style=flat-square)](https://crates.io/crates/nomad-client)
+[![docs.rs](https://img.shields.io/docsrs/nomad-client?style=flat-square)](https://docs.rs/nomad-client)
+![License](https://img.shields.io/crates/l/nomad-client?style=flat-square)
 
 Nomad OpenApi specification
 
