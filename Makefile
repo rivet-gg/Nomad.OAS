@@ -16,23 +16,13 @@ $(GEN_CLI) generate \
 	--output /local/$@
 endef
 
+SHELL=/bin/bash
+
 targets = clients/rust
 all: $(targets)
 
 clients/rust: bundle
-	$(GEN_CLI_TEMPLATE) \
-		--template-dir /local/templates/rust \
-		--generator-name rust \
-		--additional-properties packageName=nomad-client \
-		--additional-properties packageVersion=0.0.1 \
-		--additional-properties "packageDescription=A Rust client for HashiCorp Nomad's API." \
-		--additional-properties packageHomepage=https://github.com/rivet-gg/Nomad.OAS/tree/master/client/rust \
-		--additional-properties packageRepository=https://github.com/rivet-gg/Nomad.OAS \
-		--additional-properties 'packageKeywords="nomad", "hashicorp", "api", "client", "openapi", "swagger"' \
-		--additional-properties 'packageCategories="api-bindings"' \
-		--additional-properties 'packageAuthors="FuturistiCoder <FuturistiCoder@gmail.com>", "Nathan Flurry <developer@nathanflurry.com>"' \
-		--additional-properties packageLicense=MIT \
-		--additional-properties supportAsync=true
+	$(GEN_CLI_TEMPLATE) --config /local/configs/rust.yaml
 
 .PHONY: bundle
 bundle: validate dist/swagger.json

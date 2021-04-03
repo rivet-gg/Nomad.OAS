@@ -4,9 +4,21 @@ version = "0.0.1"
 description = "A Rust client for HashiCorp Nomad's API."
 homepage = "https://github.com/rivet-gg/Nomad.OAS/tree/master/client/rust"
 repository = "https://github.com/rivet-gg/Nomad.OAS"
-keywords = ["nomad"]
-categories = ["api-bindings"]
-authors = ["FuturistiCoder <FuturistiCoder@gmail.com>"]
+keywords = [
+    "nomad",
+    "hashicorp",
+    "api",
+    "client",
+    "openapi",
+    "swagger",
+]
+categories = [
+    "api-bindings",
+]
+authors = [
+    "FuturistiCoder <FuturistiCoder@gmail.com>",
+    "Nathan Flurry <developer@nathanflurry.com>",
+]
 license = "MIT"
 edition = "2018"
 readme = "README.md"

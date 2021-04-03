@@ -4,9 +4,21 @@ version = "{{{packageVersion}}}"
 description = "{{{packageDescription}}}"
 homepage = "{{{packageHomepage}}}"
 repository = "{{{packageRepository}}}"
-keywords = [{{{packageKeywords}}}]
-categories = [{{{packageCategories}}}]
-authors = [{{{packageAuthors}}}]
+keywords = [
+    {{#packageKeywords}}
+    "{{{.}}}",
+    {{/packageKeywords}}
+]
+categories = [
+    {{#packageCategories}}
+    "{{{.}}}",
+    {{/packageCategories}}
+]
+authors = [
+    {{#packageAuthors}}
+    "{{{.}}}",
+    {{/packageAuthors}}
+]
 license = "{{{packageLicense}}}"
 edition = "2018"
 readme = "README.md"

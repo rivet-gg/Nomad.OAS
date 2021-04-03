@@ -1,0 +1,3 @@
+skipValidateSpec: true
+inputSpec: "/local/dist/swagger.json"
+output: "/local/dist/TEST"
