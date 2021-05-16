@@ -1,7 +1,7 @@
 type: object
 nullable: true
 properties:
-  Cpu:
+  CPU:
     $ref: './NodeCpuResources.yaml'
   Memory:
     $ref: './NodeMemoryResources.yaml'

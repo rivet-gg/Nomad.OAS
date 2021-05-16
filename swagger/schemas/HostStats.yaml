@@ -3,7 +3,7 @@ nullable: true
 properties:
   Memory:
     $ref: './HostMemoryStats.yaml'
-  Cpu:
+  CPU:
     type: array
     nullable: true
     items:

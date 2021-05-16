@@ -1,6 +1,6 @@
 type: object
 nullable: true
 properties:
-  DiskMb:
+  DiskMB:
     type: integer
     format: int64

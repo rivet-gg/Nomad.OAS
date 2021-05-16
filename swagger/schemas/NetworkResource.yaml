@@ -5,9 +5,9 @@ properties:
     type: string
   Device:
     type: string
-  Cidr:
+  CIDR:
     type: string
-  Ip:
+  IP:
     type: string
   MBits:
     type: integer

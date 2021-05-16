@@ -1,5 +1,5 @@
 type: object
 nullable: true
 properties:
-  MemoryMb:
+  MemoryMB:
     $ref: './BigInteger.yaml'

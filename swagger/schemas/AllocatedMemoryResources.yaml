@@ -1,6 +1,6 @@
 type: object
 nullable: true
 properties:
-  MemoryMb:
+  MemoryMB:
     type: integer
     format: int64

@@ -1,13 +1,13 @@
 type: object
 nullable: true
 properties:
-  Cpu:
+  CPU:
     type: integer
     format: int32
-  MemoryMb:
+  MemoryMB:
     type: integer
     format: int32
-  DiskMb:
+  DiskMB:
     type: integer
     format: int32
   Networks:

@@ -5,6 +5,6 @@ properties:
     type: boolean
   Migrate:
     type: boolean
-  SizeMb:
+  SizeMB:
     type: integer
     format: int32

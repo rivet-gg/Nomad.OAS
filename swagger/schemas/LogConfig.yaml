@@ -4,6 +4,6 @@ properties:
   MaxFiles:
     type: integer
     format: int32
-  MaxFileSizeMb:
+  MaxFileSizeMB:
     type: integer
     format: int32

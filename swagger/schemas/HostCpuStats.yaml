@@ -1,7 +1,7 @@
 type: object
 nullable: true
 properties:
-  Cpu:
+  CPU:
     type: string
   User:
     $ref: './Double.yaml'
