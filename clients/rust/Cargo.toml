@@ -1,6 +1,6 @@
 [package]
 name = "nomad-client"
-version = "0.0.1"
+version = "0.0.2"
 description = "A Rust client for HashiCorp Nomad's API."
 homepage = "https://github.com/rivet-gg/Nomad.OAS/tree/master/clients/rust"
 repository = "https://github.com/rivet-gg/Nomad.OAS"

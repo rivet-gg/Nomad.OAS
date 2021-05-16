@@ -17,10 +17,10 @@ pub struct NetworkResource {
     pub mode: Option<String>,
     #[serde(rename = "Device", skip_serializing_if = "Option::is_none")]
     pub device: Option<String>,
-    #[serde(rename = "Cidr", skip_serializing_if = "Option::is_none")]
-    pub cidr: Option<String>,
-    #[serde(rename = "Ip", skip_serializing_if = "Option::is_none")]
-    pub ip: Option<String>,
+    #[serde(rename = "CIDR", skip_serializing_if = "Option::is_none")]
+    pub CIDR: Option<String>,
+    #[serde(rename = "IP", skip_serializing_if = "Option::is_none")]
+    pub IP: Option<String>,
     #[serde(rename = "MBits", skip_serializing_if = "Option::is_none")]
     pub m_bits: Option<i32>,
     #[serde(rename = "ReservedPorts", skip_serializing_if = "Option::is_none")]
@@ -34,8 +34,8 @@ impl NetworkResource {
         NetworkResource {
             mode: None,
             device: None,
-            cidr: None,
-            ip: None,
+            CIDR: None,
+            IP: None,
             m_bits: None,
             reserved_ports: None,
             dynamic_ports: None,

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | Option<**String**> |  | [optional]
+**CPU** | Option<**String**> |  | [optional]
 **user** | Option<**f64**> |  | [optional]
 **system** | Option<**f64**> |  | [optional]
 **idle** | Option<**f64**> |  | [optional]

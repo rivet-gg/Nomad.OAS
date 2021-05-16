@@ -51,6 +51,8 @@ pub struct ServiceCheck {
     pub grpc_use_tls: Option<bool>,
     #[serde(rename = "TaskName", skip_serializing_if = "Option::is_none")]
     pub task_name: Option<String>,
+    #[serde(rename = "OnUpdate", skip_serializing_if = "Option::is_none")]
+    pub on_update: Option<OnUpdate>,
 }
 
 impl ServiceCheck {
@@ -75,8 +77,19 @@ impl ServiceCheck {
             grpc_service: None,
             grpc_use_tls: None,
             task_name: None,
+            on_update: None,
         }
     }
 }
 
+/// 
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum OnUpdate {
+    #[serde(rename = "require_healthy")]
+    RequireHealthy,
+    #[serde(rename = "ignore_warnings")]
+    IgnoreWarnings,
+    #[serde(rename = "ignore")]
+    Ignore,
+}
 

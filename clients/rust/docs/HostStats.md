@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **memory** | Option<[**crate::models::HostMemoryStats**](HostMemoryStats.md)> |  | [optional]
-**cpu** | Option<[**Vec<crate::models::HostCpuStats>**](HostCpuStats.md)> |  | [optional]
+**CPU** | Option<[**Vec<crate::models::HostCpuStats>**](HostCpuStats.md)> |  | [optional]
 **disk_stats** | Option<[**Vec<crate::models::HostDiskStats>**](HostDiskStats.md)> |  | [optional]
 **device_stats** | Option<[**Vec<crate::models::DeviceGroupStats>**](DeviceGroupStats.md)> |  | [optional]
 **uptime** | Option<**i32**> |  | [optional]

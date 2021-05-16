@@ -4,7 +4,13 @@ properties:
   CPU:
     type: integer
     format: int32
+  Cores:
+    type: integer
+    format: int32
   MemoryMB:
+    type: integer
+    format: int32
+  MemoryMaxMB:
     type: integer
     format: int32
   DiskMB:
@@ -20,6 +26,6 @@ properties:
     nullable: true
     items:
       $ref: './RequestedDevice.yaml'
-  Iops:
+  IOPS:
     type: integer
     format: int32

@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct HostCpuStats {
-    #[serde(rename = "Cpu", skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<String>,
+    #[serde(rename = "CPU", skip_serializing_if = "Option::is_none")]
+    pub CPU: Option<String>,
     #[serde(rename = "User", skip_serializing_if = "Option::is_none")]
     pub user: Option<f64>,
     #[serde(rename = "System", skip_serializing_if = "Option::is_none")]
@@ -26,7 +26,7 @@ pub struct HostCpuStats {
 impl HostCpuStats {
     pub fn new() -> HostCpuStats {
         HostCpuStats {
-            cpu: None,
+            CPU: None,
             user: None,
             system: None,
             idle: None,

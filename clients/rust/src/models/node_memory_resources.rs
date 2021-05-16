@@ -13,7 +13,7 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NodeMemoryResources {
-    #[serde(rename = "MemoryMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "MemoryMB", skip_serializing_if = "Option::is_none")]
     pub memory_mb: Option<i64>,
 }
 

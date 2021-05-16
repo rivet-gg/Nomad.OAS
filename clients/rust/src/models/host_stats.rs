@@ -15,8 +15,8 @@
 pub struct HostStats {
     #[serde(rename = "Memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<Box<crate::models::HostMemoryStats>>,
-    #[serde(rename = "Cpu", skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<Vec<crate::models::HostCpuStats>>,
+    #[serde(rename = "CPU", skip_serializing_if = "Option::is_none")]
+    pub CPU: Option<Vec<crate::models::HostCpuStats>>,
     #[serde(rename = "DiskStats", skip_serializing_if = "Option::is_none")]
     pub disk_stats: Option<Vec<crate::models::HostDiskStats>>,
     #[serde(rename = "DeviceStats", skip_serializing_if = "Option::is_none")]
@@ -31,7 +31,7 @@ impl HostStats {
     pub fn new() -> HostStats {
         HostStats {
             memory: None,
-            cpu: None,
+            CPU: None,
             disk_stats: None,
             device_stats: None,
             uptime: None,

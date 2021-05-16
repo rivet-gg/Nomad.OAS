@@ -17,7 +17,7 @@ pub struct EphemeralDisk {
     pub sticky: Option<bool>,
     #[serde(rename = "Migrate", skip_serializing_if = "Option::is_none")]
     pub migrate: Option<bool>,
-    #[serde(rename = "SizeMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "SizeMB", skip_serializing_if = "Option::is_none")]
     pub size_mb: Option<i32>,
 }
 

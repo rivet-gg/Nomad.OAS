@@ -49,3 +49,6 @@ properties:
     type: boolean
   TaskName:
     type: string
+  OnUpdate:
+    type: string
+    enum: ["require_healthy", "ignore_warnings", "ignore"]

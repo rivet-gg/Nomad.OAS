@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **grpc_service** | Option<**String**> |  | [optional]
 **grpc_use_tls** | Option<**bool**> |  | [optional]
 **task_name** | Option<**String**> |  | [optional]
+**on_update** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

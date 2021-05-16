@@ -13,29 +13,35 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Resources {
-    #[serde(rename = "Cpu", skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<i32>,
-    #[serde(rename = "MemoryMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "CPU", skip_serializing_if = "Option::is_none")]
+    pub CPU: Option<i32>,
+    #[serde(rename = "Cores", skip_serializing_if = "Option::is_none")]
+    pub cores: Option<i32>,
+    #[serde(rename = "MemoryMB", skip_serializing_if = "Option::is_none")]
     pub memory_mb: Option<i32>,
-    #[serde(rename = "DiskMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "MemoryMaxMB", skip_serializing_if = "Option::is_none")]
+    pub memory_max_mb: Option<i32>,
+    #[serde(rename = "DiskMB", skip_serializing_if = "Option::is_none")]
     pub disk_mb: Option<i32>,
     #[serde(rename = "Networks", skip_serializing_if = "Option::is_none")]
     pub networks: Option<Vec<crate::models::NetworkResource>>,
     #[serde(rename = "Devices", skip_serializing_if = "Option::is_none")]
     pub devices: Option<Vec<crate::models::RequestedDevice>>,
-    #[serde(rename = "Iops", skip_serializing_if = "Option::is_none")]
-    pub iops: Option<i32>,
+    #[serde(rename = "IOPS", skip_serializing_if = "Option::is_none")]
+    pub IOPS: Option<i32>,
 }
 
 impl Resources {
     pub fn new() -> Resources {
         Resources {
-            cpu: None,
+            CPU: None,
+            cores: None,
             memory_mb: None,
+            memory_max_mb: None,
             disk_mb: None,
             networks: None,
             devices: None,
-            iops: None,
+            IOPS: None,
         }
     }
 }

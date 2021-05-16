@@ -13,8 +13,8 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NodeResources {
-    #[serde(rename = "Cpu", skip_serializing_if = "Option::is_none")]
-    pub cpu: Option<Box<crate::models::NodeCpuResources>>,
+    #[serde(rename = "CPU", skip_serializing_if = "Option::is_none")]
+    pub CPU: Option<Box<crate::models::NodeCpuResources>>,
     #[serde(rename = "Memory", skip_serializing_if = "Option::is_none")]
     pub memory: Option<Box<crate::models::NodeMemoryResources>>,
     #[serde(rename = "Disk", skip_serializing_if = "Option::is_none")]
@@ -28,7 +28,7 @@ pub struct NodeResources {
 impl NodeResources {
     pub fn new() -> NodeResources {
         NodeResources {
-            cpu: None,
+            CPU: None,
             memory: None,
             disk: None,
             networks: None,

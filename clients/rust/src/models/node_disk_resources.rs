@@ -13,7 +13,7 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NodeDiskResources {
-    #[serde(rename = "DiskMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "DiskMB", skip_serializing_if = "Option::is_none")]
     pub disk_mb: Option<i64>,
 }
 

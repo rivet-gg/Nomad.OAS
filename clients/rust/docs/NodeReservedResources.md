@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cpu** | Option<[**crate::models::NodeReservedCpuResources**](NodeReservedCpuResources.md)> |  | [optional]
+**CPU** | Option<[**crate::models::NodeReservedCpuResources**](NodeReservedCpuResources.md)> |  | [optional]
 **memory** | Option<[**crate::models::NodeReservedMemoryResources**](NodeReservedMemoryResources.md)> |  | [optional]
 **disk** | Option<[**crate::models::NodeReservedDiskResources**](NodeReservedDiskResources.md)> |  | [optional]
 **networks** | Option<[**crate::models::NodeReservedNetworkResources**](NodeReservedNetworkResources.md)> |  | [optional]

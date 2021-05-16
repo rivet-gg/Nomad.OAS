@@ -13,7 +13,7 @@
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AllocatedSharedResources {
-    #[serde(rename = "DiskMb", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "DiskMB", skip_serializing_if = "Option::is_none")]
     pub disk_mb: Option<i64>,
     #[serde(rename = "Networks", skip_serializing_if = "Option::is_none")]
     pub networks: Option<Vec<crate::models::NetworkResource>>,
