@@ -102,6 +102,7 @@ docs/MemoryStats.md
 docs/MigrateStrategy.md
 docs/MonitorMessage.md
 docs/Namespace.md
+docs/NetworkDns.md
 docs/NetworkResource.md
 docs/Node.md
 docs/NodeCpuResources.md
@@ -299,6 +300,7 @@ src/models/migrate_strategy.rs
 src/models/mod.rs
 src/models/monitor_message.rs
 src/models/namespace.rs
+src/models/network_dns.rs
 src/models/network_resource.rs
 src/models/node.rs
 src/models/node_cpu_resources.rs

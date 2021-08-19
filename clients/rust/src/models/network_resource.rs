@@ -27,6 +27,8 @@ pub struct NetworkResource {
     pub reserved_ports: Option<Vec<crate::models::Port>>,
     #[serde(rename = "DynamicPorts", skip_serializing_if = "Option::is_none")]
     pub dynamic_ports: Option<Vec<crate::models::Port>>,
+    #[serde(rename = "DNS", skip_serializing_if = "Option::is_none")]
+    pub DNS: Option<Box<crate::models::NetworkDns>>,
 }
 
 impl NetworkResource {
@@ -39,6 +41,7 @@ impl NetworkResource {
             m_bits: None,
             reserved_ports: None,
             dynamic_ports: None,
+            DNS: None,
         }
     }
 }

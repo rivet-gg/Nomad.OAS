@@ -5,7 +5,7 @@ docker run \
     --rm \
     --mount "type=bind,src=$(CURDIR),dst=/local" \
     --user "$(shell id -u):$(shell id -g)" \
-    openapitools/openapi-generator-cli
+    openapitools/openapi-generator-cli:v5.1.1
 endef
 
 # Command to generate a client
@@ -16,7 +16,7 @@ $(GEN_CLI) generate \
 	--output /local/$@
 endef
 
-SHELL=/bin/bash
+SHELL=/bin/sh
 
 targets = clients/rust
 all: $(targets)
@@ -35,7 +35,7 @@ clients/rust/publish: clients/rust/check
 .PHONY: bundle
 bundle: validate dist/swagger.json
 
-dist/swagger.json: $(shell find swagger/ -name *.yaml)
+dist/swagger.json: $(shell find swagger/ -name '*.yaml')
 	npx swagger-cli@4 bundle swagger/swagger.yaml -o dist/swagger.json
 
 .PHONY: validate

@@ -1,0 +1,18 @@
+type: object
+nullable: true
+properties:
+  Servers:
+    type: array
+    nullable: true
+    items:
+      type: string
+  Searches:
+    type: array
+    nullable: true
+    items:
+      type: string
+  Options:
+    type: array
+    nullable: true
+    items:
+      type: string

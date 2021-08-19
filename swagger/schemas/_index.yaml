@@ -192,6 +192,8 @@ MonitorMessage:
   $ref: './MonitorMessage.yaml'
 Namespace:
   $ref: './Namespace.yaml'
+NetworkDns:
+  $ref: './NetworkDns.yaml'
 NetworkResource:
   $ref: './NetworkResource.yaml'
 Node:

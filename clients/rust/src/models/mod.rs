@@ -186,6 +186,8 @@ pub mod monitor_message;
 pub use self::monitor_message::MonitorMessage;
 pub mod namespace;
 pub use self::namespace::Namespace;
+pub mod network_dns;
+pub use self::network_dns::NetworkDns;
 pub mod network_resource;
 pub use self::network_resource::NetworkResource;
 pub mod node;
