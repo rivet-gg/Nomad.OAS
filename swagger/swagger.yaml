@@ -24,7 +24,7 @@ paths:
   /agent/monitor:
     $ref: './paths/agent/monitor.yaml'
   # todo: Agent Runtime Profiles agent/pprof/*
-  
+
   # allocation
   /allocation/{alloc_id}:
     $ref: './paths/allocation/$alloc_id.yaml'
@@ -37,7 +37,7 @@ paths:
   # allocations
   /allocations:
     $ref: './paths/allocations/_.yaml'
-  
+
   # client
   /client/allocation/{alloc_id}/gc:
     $ref: './paths/client/allocation.$alloc_id.gc.yaml'
@@ -59,7 +59,7 @@ paths:
     $ref: './paths/client/gc.yaml'
   /client/stats:
     $ref: './paths/client/stats.yaml'
-  
+
   # deployment
   /deployment/{deployment_id}:
     $ref: './paths/deployment/$deployment_id.yaml'
@@ -120,7 +120,7 @@ paths:
     $ref: './paths/jobs/_.yaml'
   /jobs/parse:
     $ref: './paths/jobs/parse.yaml'
-  
+
   # node
   # todo: node/{node_id}/purge ? not found in nomad api
   /node/{node_id}/allocations:
@@ -136,7 +136,7 @@ paths:
   # nodes
   /nodes:
     $ref: './paths/nodes/_.yaml'
-  
+
   # todo: metrics
   # todo: operater
   # todo: plugins
@@ -147,8 +147,8 @@ paths:
   # regions
   /regions:
     $ref: './paths/regions/_.yaml'
-  
-  
+
+
   # todo: scaling policies (v0.11)
 
   # search
@@ -162,7 +162,7 @@ paths:
     $ref: './paths/status/leader.yaml'
   /status/peers:
     $ref: './paths/status/peers.yaml'
-  
+
   # system
   /system/gc:
     $ref: './paths/system/gc.yaml'
@@ -172,18 +172,32 @@ paths:
   # validate
   /validate/job:
     $ref: './paths/validate/job.yaml'
-  
+
   # volume
   /volume/csi/{volume_id}:
     $ref: './paths/volume/csi.$volume_id.yaml'
   # volumes
   /volumes:
     $ref: './paths/volumes/_.yaml'
-  
+
 components:
+  securitySchemes:
+    NomadTokenAuth:
+      type: apiKey
+      in: header
+      name: X-NOMAD-TOKEN
+      description: |
+        Several endpoints in Nomad use or require ACL tokens to operate.
+        The token are used to authenticate the request and determine if the request is allowed based on the associated authorizations.
+        Tokens are specified per-request by using the X-Nomad-Token request header set to the SecretID of an ACL Token.
+
   parameters:
     $ref: './parameters/_index.yaml'
   schemas:
     $ref: './schemas/_index.yaml'
   responses:
     $ref: './responses/_index.yaml'
+
+# Apply the API key globally to all operations
+security:
+  - NomadTokenAuth: []
