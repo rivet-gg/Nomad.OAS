@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## get_allocation
 
-> crate::models::Allocation get_allocation(alloc_id)
+> crate::models::Allocation get_allocation(alloc_id, namespace, region, index, wait)
 reads information about a specific allocation
 
 ### Parameters
@@ -23,6 +23,10 @@ reads information about a specific allocation
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -42,7 +46,7 @@ No authorization required
 
 ## get_allocations
 
-> Vec<crate::models::AllocationListStub> get_allocations(prefix)
+> Vec<crate::models::AllocationListStub> get_allocations(namespace, region, index, wait, prefix)
 query for and interact with allocations
 
 ### Parameters
@@ -50,6 +54,10 @@ query for and interact with allocations
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **prefix** | Option<**String**> | Specifies a string to filter jobs on based on an index prefix. This is specified as a query string parameter |  |
 
 ### Return type
@@ -70,7 +78,7 @@ No authorization required
 
 ## restart_allocation
 
-> restart_allocation(alloc_id, allocation_restart_request)
+> restart_allocation(alloc_id, namespace, region, index, wait, allocation_restart_request)
 restarts an allocation or task in-place
 
 ### Parameters
@@ -79,6 +87,10 @@ restarts an allocation or task in-place
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **allocation_restart_request** | Option<[**AllocationRestartRequest**](AllocationRestartRequest.md)> |  |  |
 
 ### Return type
@@ -99,7 +111,7 @@ No authorization required
 
 ## signal_allocation
 
-> signal_allocation(alloc_id, alloc_signal_request)
+> signal_allocation(alloc_id, namespace, region, index, wait, alloc_signal_request)
 sends a signal to an allocation or task
 
 ### Parameters
@@ -108,6 +120,10 @@ sends a signal to an allocation or task
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **alloc_signal_request** | Option<[**AllocSignalRequest**](AllocSignalRequest.md)> |  |  |
 
 ### Return type
@@ -128,7 +144,7 @@ No authorization required
 
 ## stop_allocation
 
-> crate::models::AllocStopResponse stop_allocation(alloc_id)
+> crate::models::AllocStopResponse stop_allocation(alloc_id, namespace, region, index, wait)
 stops and reschedules a specific allocation
 
 ### Parameters
@@ -137,6 +153,10 @@ stops and reschedules a specific allocation
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 

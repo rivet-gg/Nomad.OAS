@@ -86,13 +86,25 @@ pub enum StreamClientLogsError {
 }
 
 
-pub async fn garbage_collect_allocation(configuration: &configuration::Configuration, alloc_id: &str) -> Result<(), Error<GarbageCollectAllocationError>> {
+pub async fn garbage_collect_allocation(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<(), Error<GarbageCollectAllocationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/allocation/{alloc_id}/gc", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -112,13 +124,25 @@ pub async fn garbage_collect_allocation(configuration: &configuration::Configura
     }
 }
 
-pub async fn garbage_collect_allocation_0(configuration: &configuration::Configuration, node_id: Option<&str>) -> Result<(), Error<GarbageCollectAllocation0Error>> {
+pub async fn garbage_collect_allocation_0(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, node_id: Option<&str>) -> Result<(), Error<GarbageCollectAllocation0Error>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/gc", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = node_id {
         local_var_req_builder = local_var_req_builder.query(&[("node_id", &local_var_str.to_string())]);
     }
@@ -141,13 +165,25 @@ pub async fn garbage_collect_allocation_0(configuration: &configuration::Configu
     }
 }
 
-pub async fn get_client_allocation_stats(configuration: &configuration::Configuration, alloc_id: &str) -> Result<crate::models::AllocResourceUsage, Error<GetClientAllocationStatsError>> {
+pub async fn get_client_allocation_stats(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::AllocResourceUsage, Error<GetClientAllocationStatsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/allocation/{alloc_id}/stats", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -167,13 +203,25 @@ pub async fn get_client_allocation_stats(configuration: &configuration::Configur
     }
 }
 
-pub async fn get_client_file(configuration: &configuration::Configuration, alloc_id: &str, path: Option<&str>) -> Result<String, Error<GetClientFileError>> {
+pub async fn get_client_file(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, path: Option<&str>) -> Result<String, Error<GetClientFileError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/cat/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = path {
         local_var_req_builder = local_var_req_builder.query(&[("path", &local_var_str.to_string())]);
     }
@@ -196,13 +244,25 @@ pub async fn get_client_file(configuration: &configuration::Configuration, alloc
     }
 }
 
-pub async fn get_client_file_at_offest(configuration: &configuration::Configuration, alloc_id: &str, offset: i64, limit: i64, path: Option<&str>) -> Result<String, Error<GetClientFileAtOffestError>> {
+pub async fn get_client_file_at_offest(configuration: &configuration::Configuration, alloc_id: &str, offset: i64, limit: i64, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, path: Option<&str>) -> Result<String, Error<GetClientFileAtOffestError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/readat/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = path {
         local_var_req_builder = local_var_req_builder.query(&[("path", &local_var_str.to_string())]);
     }
@@ -227,13 +287,25 @@ pub async fn get_client_file_at_offest(configuration: &configuration::Configurat
     }
 }
 
-pub async fn get_client_stats(configuration: &configuration::Configuration, node_id: Option<&str>) -> Result<Vec<crate::models::HostStats>, Error<GetClientStatsError>> {
+pub async fn get_client_stats(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, node_id: Option<&str>) -> Result<Vec<crate::models::HostStats>, Error<GetClientStatsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/stats", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = node_id {
         local_var_req_builder = local_var_req_builder.query(&[("node_id", &local_var_str.to_string())]);
     }
@@ -256,13 +328,25 @@ pub async fn get_client_stats(configuration: &configuration::Configuration, node
     }
 }
 
-pub async fn list_client_files(configuration: &configuration::Configuration, alloc_id: &str, path: Option<&str>) -> Result<Vec<crate::models::AllocFileInfo>, Error<ListClientFilesError>> {
+pub async fn list_client_files(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, path: Option<&str>) -> Result<Vec<crate::models::AllocFileInfo>, Error<ListClientFilesError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/ls/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = path {
         local_var_req_builder = local_var_req_builder.query(&[("path", &local_var_str.to_string())]);
     }
@@ -285,13 +369,25 @@ pub async fn list_client_files(configuration: &configuration::Configuration, all
     }
 }
 
-pub async fn stat_client_file(configuration: &configuration::Configuration, alloc_id: &str, path: Option<&str>) -> Result<crate::models::AllocFileInfo, Error<StatClientFileError>> {
+pub async fn stat_client_file(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, path: Option<&str>) -> Result<crate::models::AllocFileInfo, Error<StatClientFileError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/stat/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = path {
         local_var_req_builder = local_var_req_builder.query(&[("path", &local_var_str.to_string())]);
     }
@@ -314,13 +410,25 @@ pub async fn stat_client_file(configuration: &configuration::Configuration, allo
     }
 }
 
-pub async fn stream_client_file(configuration: &configuration::Configuration, alloc_id: &str, offset: i64, path: Option<&str>, follow: Option<bool>, origin: Option<&str>) -> Result<String, Error<StreamClientFileError>> {
+pub async fn stream_client_file(configuration: &configuration::Configuration, alloc_id: &str, offset: i64, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, path: Option<&str>, follow: Option<bool>, origin: Option<&str>) -> Result<String, Error<StreamClientFileError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/stream/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = path {
         local_var_req_builder = local_var_req_builder.query(&[("path", &local_var_str.to_string())]);
     }
@@ -350,13 +458,25 @@ pub async fn stream_client_file(configuration: &configuration::Configuration, al
     }
 }
 
-pub async fn stream_client_logs(configuration: &configuration::Configuration, alloc_id: &str, task: &str, offset: i64, follow: Option<bool>, _type: Option<&str>, origin: Option<&str>, plain: Option<bool>) -> Result<String, Error<StreamClientLogsError>> {
+pub async fn stream_client_logs(configuration: &configuration::Configuration, alloc_id: &str, task: &str, offset: i64, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, follow: Option<bool>, _type: Option<&str>, origin: Option<&str>, plain: Option<bool>) -> Result<String, Error<StreamClientLogsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/client/fs/logs/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     local_var_req_builder = local_var_req_builder.query(&[("task", &task.to_string())]);
     if let Some(ref local_var_str) = follow {
         local_var_req_builder = local_var_req_builder.query(&[("follow", &local_var_str.to_string())]);

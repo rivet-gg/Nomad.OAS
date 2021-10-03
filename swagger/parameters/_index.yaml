@@ -1,4 +1,13 @@
-﻿  alloc_id:
+﻿  namespace:
+    $ref: './query/namespace.yaml'
+  region:
+    $ref: './query/region.yaml'
+  index:
+    $ref: './query/index.yaml'
+  wait:
+    $ref: './query/wait.yaml'
+
+  alloc_id:
     $ref: './path/alloc_id.yaml'
   deployment_id:
     $ref: './path/deployment_id.yaml'

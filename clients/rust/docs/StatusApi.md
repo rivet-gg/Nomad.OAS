@@ -11,12 +11,18 @@ Method | HTTP request | Description
 
 ## get_leader
 
-> String get_leader()
+> String get_leader(namespace, region, index, wait)
 returns the address of the current leader in the region
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -36,12 +42,18 @@ No authorization required
 
 ## get_peers
 
-> Vec<String> get_peers()
+> Vec<String> get_peers(namespace, region, index, wait)
 returns the set of raft peers in the region
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 

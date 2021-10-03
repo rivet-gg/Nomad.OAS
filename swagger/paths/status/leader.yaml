@@ -3,7 +3,11 @@ get:
   operationId: getLeader
   tags:
     - status
-
+  parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
   responses:
     '200':
       description: leader name 

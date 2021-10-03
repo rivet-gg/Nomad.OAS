@@ -1,0 +1,6 @@
+name: wait
+in: query
+description: wait time used for blocking requests
+required: false
+schema:
+  type: string

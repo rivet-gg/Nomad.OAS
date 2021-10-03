@@ -23,13 +23,25 @@ pub enum GetRegionsError {
 }
 
 
-pub async fn get_regions(configuration: &configuration::Configuration, ) -> Result<Vec<String>, Error<GetRegionsError>> {
+pub async fn get_regions(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<String>, Error<GetRegionsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/regions", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

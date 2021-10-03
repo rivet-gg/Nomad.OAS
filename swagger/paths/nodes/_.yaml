@@ -4,6 +4,11 @@ get:
   tags:
     - nodes
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/query/prefix.yaml'
   responses:
     '200':

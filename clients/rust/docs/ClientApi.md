@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## garbage_collect_allocation
 
-> garbage_collect_allocation(alloc_id)
+> garbage_collect_allocation(alloc_id, namespace, region, index, wait)
 forces a garbage collection of a particular, stopped allocation on a node
 
 ### Parameters
@@ -28,6 +28,10 @@ forces a garbage collection of a particular, stopped allocation on a node
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -47,7 +51,7 @@ No authorization required
 
 ## garbage_collect_allocation_0
 
-> garbage_collect_allocation_0(node_id)
+> garbage_collect_allocation_0(namespace, region, index, wait, node_id)
 forces a garbage collection of all stopped allocations on a node
 
 ### Parameters
@@ -55,6 +59,10 @@ forces a garbage collection of all stopped allocations on a node
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **node_id** | Option<**String**> | node id |  |
 
 ### Return type
@@ -75,7 +83,7 @@ No authorization required
 
 ## get_client_allocation_stats
 
-> crate::models::AllocResourceUsage get_client_allocation_stats(alloc_id)
+> crate::models::AllocResourceUsage get_client_allocation_stats(alloc_id, namespace, region, index, wait)
 query the actual resources consumed by an allocation
 
 ### Parameters
@@ -84,6 +92,10 @@ query the actual resources consumed by an allocation
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -103,7 +115,7 @@ No authorization required
 
 ## get_client_file
 
-> String get_client_file(alloc_id, path)
+> String get_client_file(alloc_id, namespace, region, index, wait, path)
 reads the contents of a file in an allocation directory
 
 ### Parameters
@@ -112,6 +124,10 @@ reads the contents of a file in an allocation directory
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **path** | Option<**String**> | Specifies the path of the file to read, relative to the root of the allocation directory |  |
 
 ### Return type
@@ -132,7 +148,7 @@ No authorization required
 
 ## get_client_file_at_offest
 
-> String get_client_file_at_offest(alloc_id, offset, limit, path)
+> String get_client_file_at_offest(alloc_id, offset, limit, namespace, region, index, wait, path)
 reads the contents of a file in an allocation directory at a particular offset and limit
 
 ### Parameters
@@ -143,6 +159,10 @@ Name | Type | Description  | Required | Notes
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
 **offset** | **i64** | Specifies the byte offset from where content will be read | [required] |
 **limit** | **i64** | Specifies the number of bytes to read from the offset | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **path** | Option<**String**> | Specifies the path of the file to read, relative to the root of the allocation directory |  |
 
 ### Return type
@@ -163,7 +183,7 @@ No authorization required
 
 ## get_client_stats
 
-> Vec<crate::models::HostStats> get_client_stats(node_id)
+> Vec<crate::models::HostStats> get_client_stats(namespace, region, index, wait, node_id)
 queries the actual resources consumed on a node. The API endpoint is hosted by the Nomad client and requests have to be made to the nomad client whose resource usage metrics are of interest
 
 ### Parameters
@@ -171,6 +191,10 @@ queries the actual resources consumed on a node. The API endpoint is hosted by t
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **node_id** | Option<**String**> | node id |  |
 
 ### Return type
@@ -191,7 +215,7 @@ No authorization required
 
 ## list_client_files
 
-> Vec<crate::models::AllocFileInfo> list_client_files(alloc_id, path)
+> Vec<crate::models::AllocFileInfo> list_client_files(alloc_id, namespace, region, index, wait, path)
 lists files in an allocation directory
 
 ### Parameters
@@ -200,6 +224,10 @@ lists files in an allocation directory
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **path** | Option<**String**> | Specifies the path of the file to read, relative to the root of the allocation directory |  |
 
 ### Return type
@@ -220,7 +248,7 @@ No authorization required
 
 ## stat_client_file
 
-> crate::models::AllocFileInfo stat_client_file(alloc_id, path)
+> crate::models::AllocFileInfo stat_client_file(alloc_id, namespace, region, index, wait, path)
 stats a file in an allocation
 
 ### Parameters
@@ -229,6 +257,10 @@ stats a file in an allocation
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **path** | Option<**String**> | Specifies the path of the file to read, relative to the root of the allocation directory |  |
 
 ### Return type
@@ -249,7 +281,7 @@ No authorization required
 
 ## stream_client_file
 
-> String stream_client_file(alloc_id, offset, path, follow, origin)
+> String stream_client_file(alloc_id, offset, namespace, region, index, wait, path, follow, origin)
 streams the contents of a file in an allocation directory
 
 ### Parameters
@@ -259,6 +291,10 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
 **offset** | **i64** | Specifies the byte offset from where content will be read | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **path** | Option<**String**> | Specifies the path of the file to read, relative to the root of the allocation directory |  |
 **follow** | Option<**bool**> | Specifies whether to tail the file |  |[default to true]
 **origin** | Option<**String**> | Applies the relative offset to either the start or end of the file |  |[default to start]
@@ -281,7 +317,7 @@ No authorization required
 
 ## stream_client_logs
 
-> String stream_client_logs(alloc_id, task, offset, follow, _type, origin, plain)
+> String stream_client_logs(alloc_id, task, offset, namespace, region, index, wait, follow, _type, origin, plain)
 streams a task's stderr/stdout logs
 
 ### Parameters
@@ -292,6 +328,10 @@ Name | Type | Description  | Required | Notes
 **alloc_id** | **String** | Specifies the UUID of the allocation. This must be the full UUID, not the short 8-character one | [required] |
 **task** | **String** | Specifies the name of the task inside the allocation to stream logs from | [required] |
 **offset** | **i64** | Specifies the byte offset from where content will be read | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **follow** | Option<**bool**> | Specifies whether to tail the file |  |[default to true]
 **_type** | Option<**String**> | Specifies the stream to stream |  |
 **origin** | Option<**String**> | Applies the relative offset to either the start or end of the file |  |[default to start]

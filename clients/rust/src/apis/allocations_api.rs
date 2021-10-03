@@ -51,13 +51,25 @@ pub enum StopAllocationError {
 }
 
 
-pub async fn get_allocation(configuration: &configuration::Configuration, alloc_id: &str) -> Result<crate::models::Allocation, Error<GetAllocationError>> {
+pub async fn get_allocation(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Allocation, Error<GetAllocationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/allocation/{alloc_id}", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -77,13 +89,25 @@ pub async fn get_allocation(configuration: &configuration::Configuration, alloc_
     }
 }
 
-pub async fn get_allocations(configuration: &configuration::Configuration, prefix: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsError>> {
+pub async fn get_allocations(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, prefix: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/allocations", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = prefix {
         local_var_req_builder = local_var_req_builder.query(&[("prefix", &local_var_str.to_string())]);
     }
@@ -106,13 +130,25 @@ pub async fn get_allocations(configuration: &configuration::Configuration, prefi
     }
 }
 
-pub async fn restart_allocation(configuration: &configuration::Configuration, alloc_id: &str, allocation_restart_request: Option<crate::models::AllocationRestartRequest>) -> Result<(), Error<RestartAllocationError>> {
+pub async fn restart_allocation(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, allocation_restart_request: Option<crate::models::AllocationRestartRequest>) -> Result<(), Error<RestartAllocationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/allocation/{alloc_id}/restart", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -133,13 +169,25 @@ pub async fn restart_allocation(configuration: &configuration::Configuration, al
     }
 }
 
-pub async fn signal_allocation(configuration: &configuration::Configuration, alloc_id: &str, alloc_signal_request: Option<crate::models::AllocSignalRequest>) -> Result<(), Error<SignalAllocationError>> {
+pub async fn signal_allocation(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, alloc_signal_request: Option<crate::models::AllocSignalRequest>) -> Result<(), Error<SignalAllocationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/allocation/{alloc_id}/signal", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -160,13 +208,25 @@ pub async fn signal_allocation(configuration: &configuration::Configuration, all
     }
 }
 
-pub async fn stop_allocation(configuration: &configuration::Configuration, alloc_id: &str) -> Result<crate::models::AllocStopResponse, Error<StopAllocationError>> {
+pub async fn stop_allocation(configuration: &configuration::Configuration, alloc_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::AllocStopResponse, Error<StopAllocationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/allocation/{alloc_id}/stop", configuration.base_path, alloc_id=crate::apis::urlencode(alloc_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

@@ -4,6 +4,11 @@ post:
   tags:
     - jobs
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/path/job_id.yaml'
   requestBody:
     content:

@@ -65,13 +65,25 @@ pub enum SetAllocationHealthInDeploymentError {
 }
 
 
-pub async fn fail_deployment(configuration: &configuration::Configuration, deployment_id: &str) -> Result<crate::models::DeploymentUpdateResponse, Error<FailDeploymentError>> {
+pub async fn fail_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::DeploymentUpdateResponse, Error<FailDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/fail/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -91,13 +103,25 @@ pub async fn fail_deployment(configuration: &configuration::Configuration, deplo
     }
 }
 
-pub async fn get_allocations_for_deployment(configuration: &configuration::Configuration, deployment_id: &str) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForDeploymentError>> {
+pub async fn get_allocations_for_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/allocations/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -117,13 +141,25 @@ pub async fn get_allocations_for_deployment(configuration: &configuration::Confi
     }
 }
 
-pub async fn get_deployment(configuration: &configuration::Configuration, deployment_id: &str) -> Result<crate::models::Deployment, Error<GetDeploymentError>> {
+pub async fn get_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Deployment, Error<GetDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -143,13 +179,25 @@ pub async fn get_deployment(configuration: &configuration::Configuration, deploy
     }
 }
 
-pub async fn get_deployments(configuration: &configuration::Configuration, prefix: Option<&str>) -> Result<Vec<crate::models::Deployment>, Error<GetDeploymentsError>> {
+pub async fn get_deployments(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, prefix: Option<&str>) -> Result<Vec<crate::models::Deployment>, Error<GetDeploymentsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployments", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = prefix {
         local_var_req_builder = local_var_req_builder.query(&[("prefix", &local_var_str.to_string())]);
     }
@@ -172,13 +220,25 @@ pub async fn get_deployments(configuration: &configuration::Configuration, prefi
     }
 }
 
-pub async fn pause_deployment(configuration: &configuration::Configuration, deployment_id: &str, deployment_pause_request: Option<crate::models::DeploymentPauseRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<PauseDeploymentError>> {
+pub async fn pause_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, deployment_pause_request: Option<crate::models::DeploymentPauseRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<PauseDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/pause/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -199,13 +259,25 @@ pub async fn pause_deployment(configuration: &configuration::Configuration, depl
     }
 }
 
-pub async fn promote_deployment(configuration: &configuration::Configuration, deployment_id: &str, deployment_promote_request: Option<crate::models::DeploymentPromoteRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<PromoteDeploymentError>> {
+pub async fn promote_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, deployment_promote_request: Option<crate::models::DeploymentPromoteRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<PromoteDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/promote/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -227,13 +299,25 @@ pub async fn promote_deployment(configuration: &configuration::Configuration, de
 }
 
 /// In some use cases, automatic detection of allocation health may not be desired. As such those task groups can be marked with an upgrade policy that uses health_check = \"manual\". Those allocations must have their health marked manually using this endpoint. Marking an allocation as healthy will allow the rolling upgrade to proceed. Marking it as failed will cause the deployment to fail. This endpoint only triggers a rollback if the most recent stable version of the job has a different specification than the job being reverted
-pub async fn set_allocation_health_in_deployment(configuration: &configuration::Configuration, deployment_id: &str, deployment_alloc_health_request: Option<crate::models::DeploymentAllocHealthRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<SetAllocationHealthInDeploymentError>> {
+pub async fn set_allocation_health_in_deployment(configuration: &configuration::Configuration, deployment_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, deployment_alloc_health_request: Option<crate::models::DeploymentAllocHealthRequest>) -> Result<crate::models::DeploymentUpdateResponse, Error<SetAllocationHealthInDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/deployment/allocation-health/{deployment_id}", configuration.base_path, deployment_id=crate::apis::urlencode(deployment_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

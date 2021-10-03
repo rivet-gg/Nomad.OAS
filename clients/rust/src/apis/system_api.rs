@@ -30,13 +30,25 @@ pub enum ReconcileSummaryError {
 }
 
 
-pub async fn force_gc(configuration: &configuration::Configuration, ) -> Result<(), Error<ForceGcError>> {
+pub async fn force_gc(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<(), Error<ForceGcError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/system/gc", configuration.base_path);
     let mut local_var_req_builder = local_var_client.put(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -56,13 +68,25 @@ pub async fn force_gc(configuration: &configuration::Configuration, ) -> Result<
     }
 }
 
-pub async fn reconcile_summary(configuration: &configuration::Configuration, ) -> Result<(), Error<ReconcileSummaryError>> {
+pub async fn reconcile_summary(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<(), Error<ReconcileSummaryError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/system/reconcile/summaries", configuration.base_path);
     let mut local_var_req_builder = local_var_client.put(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

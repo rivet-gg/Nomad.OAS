@@ -10,12 +10,18 @@ Method | HTTP request | Description
 
 ## get_regions
 
-> Vec<String> get_regions()
+> Vec<String> get_regions(namespace, region, index, wait)
 list all known regions
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 

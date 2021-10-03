@@ -1,0 +1,6 @@
+name: region
+in: query
+description: Make a request across regions to the given region
+required: false
+schema:
+  type: string

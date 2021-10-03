@@ -37,13 +37,25 @@ pub enum GetEvaluationsError {
 }
 
 
-pub async fn get_allocations_for_evaluation(configuration: &configuration::Configuration, eval_id: &str) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForEvaluationError>> {
+pub async fn get_allocations_for_evaluation(configuration: &configuration::Configuration, eval_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForEvaluationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/evaluation/{eval_id}/allocations", configuration.base_path, eval_id=crate::apis::urlencode(eval_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -63,13 +75,25 @@ pub async fn get_allocations_for_evaluation(configuration: &configuration::Confi
     }
 }
 
-pub async fn get_evaluation(configuration: &configuration::Configuration, eval_id: &str) -> Result<crate::models::Evaluation, Error<GetEvaluationError>> {
+pub async fn get_evaluation(configuration: &configuration::Configuration, eval_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Evaluation, Error<GetEvaluationError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/evaluation/{eval_id}", configuration.base_path, eval_id=crate::apis::urlencode(eval_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -89,13 +113,25 @@ pub async fn get_evaluation(configuration: &configuration::Configuration, eval_i
     }
 }
 
-pub async fn get_evaluations(configuration: &configuration::Configuration, prefix: Option<&str>) -> Result<Vec<crate::models::Evaluation>, Error<GetEvaluationsError>> {
+pub async fn get_evaluations(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, prefix: Option<&str>) -> Result<Vec<crate::models::Evaluation>, Error<GetEvaluationsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/evaluations", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = prefix {
         local_var_req_builder = local_var_req_builder.query(&[("prefix", &local_var_str.to_string())]);
     }

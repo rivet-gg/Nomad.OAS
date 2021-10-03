@@ -65,13 +65,25 @@ pub enum UpdateNodeEligibilityError {
 }
 
 
-pub async fn evaluate_node(configuration: &configuration::Configuration, node_id: &str) -> Result<crate::models::NodeEvalResponse, Error<EvaluateNodeError>> {
+pub async fn evaluate_node(configuration: &configuration::Configuration, node_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::NodeEvalResponse, Error<EvaluateNodeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/node/{node_id}/evaluate", configuration.base_path, node_id=crate::apis::urlencode(node_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -92,13 +104,25 @@ pub async fn evaluate_node(configuration: &configuration::Configuration, node_id
 }
 
 /// This can be used to determine what allocations have been scheduled on the node, their current status, and the values of dynamically assigned resources, like ports
-pub async fn get_allocations_for_node(configuration: &configuration::Configuration, node_id: &str) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForNodeError>> {
+pub async fn get_allocations_for_node(configuration: &configuration::Configuration, node_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<crate::models::AllocationListStub>, Error<GetAllocationsForNodeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/node/{node_id}/allocations", configuration.base_path, node_id=crate::apis::urlencode(node_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -118,13 +142,25 @@ pub async fn get_allocations_for_node(configuration: &configuration::Configurati
     }
 }
 
-pub async fn get_node(configuration: &configuration::Configuration, node_id: &str) -> Result<crate::models::Node, Error<GetNodeError>> {
+pub async fn get_node(configuration: &configuration::Configuration, node_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Node, Error<GetNodeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/node/{node_id}", configuration.base_path, node_id=crate::apis::urlencode(node_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -144,13 +180,25 @@ pub async fn get_node(configuration: &configuration::Configuration, node_id: &st
     }
 }
 
-pub async fn get_nodes(configuration: &configuration::Configuration, prefix: Option<&str>) -> Result<Vec<crate::models::NodeListStub>, Error<GetNodesError>> {
+pub async fn get_nodes(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, prefix: Option<&str>) -> Result<Vec<crate::models::NodeListStub>, Error<GetNodesError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/nodes", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = prefix {
         local_var_req_builder = local_var_req_builder.query(&[("prefix", &local_var_str.to_string())]);
     }
@@ -174,13 +222,25 @@ pub async fn get_nodes(configuration: &configuration::Configuration, prefix: Opt
 }
 
 /// When using Nomad Enterprise, the allowed contexts include quotas and namespaces. Additionally, a prefix can be searched for within every context
-pub async fn search(configuration: &configuration::Configuration, search_request: Option<crate::models::SearchRequest>) -> Result<crate::models::SearchResponse, Error<SearchError>> {
+pub async fn search(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, search_request: Option<crate::models::SearchRequest>) -> Result<crate::models::SearchResponse, Error<SearchError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/search", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -202,13 +262,25 @@ pub async fn search(configuration: &configuration::Configuration, search_request
 }
 
 /// When draining is enabled, no further allocations will be assigned to this node, and existing allocations will be migrated to new nodes
-pub async fn update_drain_mode_for_node(configuration: &configuration::Configuration, node_id: &str, node_update_drain_request: Option<crate::models::NodeUpdateDrainRequest>) -> Result<crate::models::NodeDrainUpdateResponse, Error<UpdateDrainModeForNodeError>> {
+pub async fn update_drain_mode_for_node(configuration: &configuration::Configuration, node_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, node_update_drain_request: Option<crate::models::NodeUpdateDrainRequest>) -> Result<crate::models::NodeDrainUpdateResponse, Error<UpdateDrainModeForNodeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/node/{node_id}/drain", configuration.base_path, node_id=crate::apis::urlencode(node_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -229,13 +301,25 @@ pub async fn update_drain_mode_for_node(configuration: &configuration::Configura
     }
 }
 
-pub async fn update_node_eligibility(configuration: &configuration::Configuration, node_id: &str, node_update_eligibility_request: Option<crate::models::NodeUpdateEligibilityRequest>) -> Result<crate::models::NodeEligibilityUpdateResponse, Error<UpdateNodeEligibilityError>> {
+pub async fn update_node_eligibility(configuration: &configuration::Configuration, node_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, node_update_eligibility_request: Option<crate::models::NodeUpdateEligibilityRequest>) -> Result<crate::models::NodeEligibilityUpdateResponse, Error<UpdateNodeEligibilityError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/node/{node_id}/eligibility", configuration.base_path, node_id=crate::apis::urlencode(node_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

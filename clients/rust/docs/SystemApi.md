@@ -11,12 +11,18 @@ Method | HTTP request | Description
 
 ## force_gc
 
-> force_gc()
+> force_gc(namespace, region, index, wait)
 initializes a garbage collection of jobs, evaluations, allocations, and nodes. This is an asynchronous operation
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -36,12 +42,18 @@ No authorization required
 
 ## reconcile_summary
 
-> reconcile_summary()
+> reconcile_summary(namespace, region, index, wait)
 reconciles the summaries of all registered jobs
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 

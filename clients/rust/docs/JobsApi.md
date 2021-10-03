@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 ## dispatch_job
 
-> crate::models::JobDispatchResponse dispatch_job(job_id, job_dispatch_request)
+> crate::models::JobDispatchResponse dispatch_job(job_id, namespace, region, index, wait, job_dispatch_request)
 dispatches a new instance of a parameterized job
 
 ### Parameters
@@ -39,6 +39,10 @@ dispatches a new instance of a parameterized job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_dispatch_request** | Option<[**JobDispatchRequest**](JobDispatchRequest.md)> |  |  |
 
 ### Return type
@@ -59,7 +63,7 @@ No authorization required
 
 ## evaluate_job
 
-> crate::models::JobRegisterResponse evaluate_job(job_id, job_evaluate_request)
+> crate::models::JobRegisterResponse evaluate_job(job_id, namespace, region, index, wait, job_evaluate_request)
 creates a new evaluation for the given job. This can be used to force run the scheduling logic if necessary
 
 ### Parameters
@@ -68,6 +72,10 @@ creates a new evaluation for the given job. This can be used to force run the sc
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_evaluate_request** | Option<[**JobEvaluateRequest**](JobEvaluateRequest.md)> |  |  |
 
 ### Return type
@@ -88,7 +96,7 @@ No authorization required
 
 ## force_new_periodic_instance
 
-> crate::models::PeriodicForceResponse force_new_periodic_instance(job_id)
+> crate::models::PeriodicForceResponse force_new_periodic_instance(job_id, namespace, region, index, wait)
 forces a new instance of the periodic job. A new instance will be created even if it violates the job's prohibit_overlap settings. As such, this should be only used to immediately run a periodic job
 
 ### Parameters
@@ -97,6 +105,10 @@ forces a new instance of the periodic job. A new instance will be created even i
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -116,7 +128,7 @@ No authorization required
 
 ## get_job
 
-> crate::models::Job get_job(job_id)
+> crate::models::Job get_job(job_id, namespace, region, index, wait)
 reads information about a single job for its specification and status
 
 ### Parameters
@@ -125,6 +137,10 @@ reads information about a single job for its specification and status
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -173,7 +189,7 @@ No authorization required
 
 ## get_job_deployments
 
-> Vec<crate::models::Deployment> get_job_deployments(job_id, all)
+> Vec<crate::models::Deployment> get_job_deployments(job_id, namespace, region, index, wait, all)
 lists a single job's deployments
 
 ### Parameters
@@ -182,6 +198,10 @@ lists a single job's deployments
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **all** | Option<**bool**> | Specifies whether should include * from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. |  |
 
 ### Return type
@@ -202,7 +222,7 @@ No authorization required
 
 ## get_job_evaluations
 
-> Vec<crate::models::Evaluation> get_job_evaluations(job_id)
+> Vec<crate::models::Evaluation> get_job_evaluations(job_id, namespace, region, index, wait)
 reads information about a single job's evaluations
 
 ### Parameters
@@ -211,6 +231,10 @@ reads information about a single job's evaluations
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -230,7 +254,7 @@ No authorization required
 
 ## get_job_latest_deployment
 
-> crate::models::Deployment get_job_latest_deployment(job_id)
+> crate::models::Deployment get_job_latest_deployment(job_id, namespace, region, index, wait)
 get a single job's most recent deployment
 
 ### Parameters
@@ -239,6 +263,10 @@ get a single job's most recent deployment
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -258,7 +286,7 @@ No authorization required
 
 ## get_job_scale_status
 
-> crate::models::JobScaleStatusResponse get_job_scale_status(job_id)
+> crate::models::JobScaleStatusResponse get_job_scale_status(job_id, namespace, region, index, wait)
 reads scale information about a job
 
 ### Parameters
@@ -267,6 +295,10 @@ reads scale information about a job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -286,7 +318,7 @@ No authorization required
 
 ## get_job_summary
 
-> crate::models::JobSummary get_job_summary(job_id)
+> crate::models::JobSummary get_job_summary(job_id, namespace, region, index, wait)
 reads summary information about a job
 
 ### Parameters
@@ -295,6 +327,10 @@ reads summary information about a job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -314,7 +350,7 @@ No authorization required
 
 ## get_job_versions
 
-> crate::models::JobVersionsResponse get_job_versions(job_id)
+> crate::models::JobVersionsResponse get_job_versions(job_id, namespace, region, index, wait)
 reads information about all versions of a job
 
 ### Parameters
@@ -323,6 +359,10 @@ reads information about all versions of a job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -342,7 +382,7 @@ No authorization required
 
 ## get_jobs
 
-> Vec<crate::models::JobListStub> get_jobs(prefix)
+> Vec<crate::models::JobListStub> get_jobs(namespace, region, index, wait, prefix)
 lists all known jobs in the system registered with Nomad
 
 ### Parameters
@@ -350,6 +390,10 @@ lists all known jobs in the system registered with Nomad
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **prefix** | Option<**String**> | Specifies a string to filter jobs on based on an index prefix. This is specified as a query string parameter |  |
 
 ### Return type
@@ -370,7 +414,7 @@ No authorization required
 
 ## parse_job_hcl
 
-> crate::models::Job parse_job_hcl(jobs_parse_request)
+> crate::models::Job parse_job_hcl(namespace, region, index, wait, jobs_parse_request)
 parse a HCL jobspec and produce the equivalent JSON encoded job
 
 ### Parameters
@@ -378,6 +422,10 @@ parse a HCL jobspec and produce the equivalent JSON encoded job
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **jobs_parse_request** | Option<[**JobsParseRequest**](JobsParseRequest.md)> |  |  |
 
 ### Return type
@@ -398,7 +446,7 @@ No authorization required
 
 ## plan_job
 
-> crate::models::JobPlanResponse plan_job(job_id, job_plan_request)
+> crate::models::JobPlanResponse plan_job(job_id, namespace, region, index, wait, job_plan_request)
 invokes a dry-run of the scheduler for the job
 
 ### Parameters
@@ -407,6 +455,10 @@ invokes a dry-run of the scheduler for the job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_plan_request** | Option<[**JobPlanRequest**](JobPlanRequest.md)> |  |  |
 
 ### Return type
@@ -455,7 +507,7 @@ No authorization required
 
 ## revert_job
 
-> crate::models::JobRegisterResponse revert_job(job_id, job_revert_request)
+> crate::models::JobRegisterResponse revert_job(job_id, namespace, region, index, wait, job_revert_request)
 reverts the job to an older version
 
 ### Parameters
@@ -464,6 +516,10 @@ reverts the job to an older version
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_revert_request** | Option<[**JobRevertRequest**](JobRevertRequest.md)> |  |  |
 
 ### Return type
@@ -513,7 +569,7 @@ No authorization required
 
 ## set_job_stability
 
-> crate::models::JobStabilityResponse set_job_stability(job_id, job_stability_request)
+> crate::models::JobStabilityResponse set_job_stability(job_id, namespace, region, index, wait, job_stability_request)
 sets the job's stability
 
 ### Parameters
@@ -522,6 +578,10 @@ sets the job's stability
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_stability_request** | Option<[**JobStabilityRequest**](JobStabilityRequest.md)> |  |  |
 
 ### Return type
@@ -600,7 +660,7 @@ No authorization required
 
 ## validate_job
 
-> crate::models::JobValidateResponse validate_job(job_validate_request)
+> crate::models::JobValidateResponse validate_job(namespace, region, index, wait, job_validate_request)
 validate object structs, fields, and types
 
 ### Parameters
@@ -608,6 +668,10 @@ validate object structs, fields, and types
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **job_validate_request** | Option<[**JobValidateRequest**](JobValidateRequest.md)> |  |  |
 
 ### Return type

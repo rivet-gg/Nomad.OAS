@@ -3,7 +3,11 @@ put:
   operationId: forceGC
   tags:
     - system
-
+  parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
   responses:
     '200':
       $ref: '../../responses/NullResponse.yaml'

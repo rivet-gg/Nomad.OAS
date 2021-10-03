@@ -72,13 +72,25 @@ pub enum UpdateServersError {
 }
 
 
-pub async fn force_leave(configuration: &configuration::Configuration, node: &str) -> Result<(), Error<ForceLeaveError>> {
+pub async fn force_leave(configuration: &configuration::Configuration, node: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<(), Error<ForceLeaveError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/force-leave", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     local_var_req_builder = local_var_req_builder.query(&[("node", &node.to_string())]);
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
@@ -99,13 +111,25 @@ pub async fn force_leave(configuration: &configuration::Configuration, node: &st
     }
 }
 
-pub async fn get_health(configuration: &configuration::Configuration, ) -> Result<crate::models::AgentHealthResponse, Error<GetHealthError>> {
+pub async fn get_health(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::AgentHealthResponse, Error<GetHealthError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/health", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -125,13 +149,25 @@ pub async fn get_health(configuration: &configuration::Configuration, ) -> Resul
     }
 }
 
-pub async fn get_members(configuration: &configuration::Configuration, ) -> Result<crate::models::ServerMembers, Error<GetMembersError>> {
+pub async fn get_members(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::ServerMembers, Error<GetMembersError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/members", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -151,13 +187,25 @@ pub async fn get_members(configuration: &configuration::Configuration, ) -> Resu
     }
 }
 
-pub async fn get_self(configuration: &configuration::Configuration, ) -> Result<crate::models::AgentSelf, Error<GetSelfError>> {
+pub async fn get_self(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::AgentSelf, Error<GetSelfError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/self", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -203,13 +251,25 @@ pub async fn get_servers(configuration: &configuration::Configuration, ) -> Resu
     }
 }
 
-pub async fn join(configuration: &configuration::Configuration, address: Vec<String>) -> Result<crate::models::JoinResponse, Error<JoinError>> {
+pub async fn join(configuration: &configuration::Configuration, address: Vec<String>, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::JoinResponse, Error<JoinError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/join", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     local_var_req_builder = local_var_req_builder.query(&[("address", &address.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]);
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
@@ -230,13 +290,25 @@ pub async fn join(configuration: &configuration::Configuration, address: Vec<Str
     }
 }
 
-pub async fn stream_logs(configuration: &configuration::Configuration, log_level: Option<&str>, node_id: Option<&str>, server_id: Option<&str>, json: Option<bool>, plain: Option<bool>) -> Result<crate::models::StreamFrame, Error<StreamLogsError>> {
+pub async fn stream_logs(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, log_level: Option<&str>, node_id: Option<&str>, server_id: Option<&str>, json: Option<bool>, plain: Option<bool>) -> Result<crate::models::StreamFrame, Error<StreamLogsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/monitor", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = log_level {
         local_var_req_builder = local_var_req_builder.query(&[("log_level", &local_var_str.to_string())]);
     }

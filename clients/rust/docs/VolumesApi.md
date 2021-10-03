@@ -41,7 +41,7 @@ No authorization required
 
 ## get_volume
 
-> crate::models::CsiVolume get_volume(volume_id)
+> crate::models::CsiVolume get_volume(volume_id, namespace, region, index, wait)
 reads information about a specific volume
 
 ### Parameters
@@ -50,6 +50,10 @@ reads information about a specific volume
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **volume_id** | **String** | Specifies the ID of the volume. This must be the full ID. This is specified as part of the path | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -69,7 +73,7 @@ No authorization required
 
 ## get_volumes
 
-> Vec<crate::models::CsiVolumeListStub> get_volumes(_type, node_id, plugin_id)
+> Vec<crate::models::CsiVolumeListStub> get_volumes(namespace, region, index, wait, _type, node_id, plugin_id)
 lists all volumes
 
 ### Parameters
@@ -77,6 +81,10 @@ lists all volumes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **_type** | Option<**String**> | Specifies the type of volume to query. Currently only supports csi. This is specified as a query string parameter. Returns an empty list if omitted |  |
 **node_id** | Option<**String**> | node id |  |
 **plugin_id** | Option<**String**> | Specifies a string to filter volumes based on a plugin ID prefix |  |

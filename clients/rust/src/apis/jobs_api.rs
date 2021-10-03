@@ -163,13 +163,25 @@ pub enum ValidateJobError {
 }
 
 
-pub async fn dispatch_job(configuration: &configuration::Configuration, job_id: &str, job_dispatch_request: Option<crate::models::JobDispatchRequest>) -> Result<crate::models::JobDispatchResponse, Error<DispatchJobError>> {
+pub async fn dispatch_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_dispatch_request: Option<crate::models::JobDispatchRequest>) -> Result<crate::models::JobDispatchResponse, Error<DispatchJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/dispatch", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -190,13 +202,25 @@ pub async fn dispatch_job(configuration: &configuration::Configuration, job_id: 
     }
 }
 
-pub async fn evaluate_job(configuration: &configuration::Configuration, job_id: &str, job_evaluate_request: Option<crate::models::JobEvaluateRequest>) -> Result<crate::models::JobRegisterResponse, Error<EvaluateJobError>> {
+pub async fn evaluate_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_evaluate_request: Option<crate::models::JobEvaluateRequest>) -> Result<crate::models::JobRegisterResponse, Error<EvaluateJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/evaluate", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -217,13 +241,25 @@ pub async fn evaluate_job(configuration: &configuration::Configuration, job_id: 
     }
 }
 
-pub async fn force_new_periodic_instance(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::PeriodicForceResponse, Error<ForceNewPeriodicInstanceError>> {
+pub async fn force_new_periodic_instance(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::PeriodicForceResponse, Error<ForceNewPeriodicInstanceError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/periodic/force", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -243,13 +279,25 @@ pub async fn force_new_periodic_instance(configuration: &configuration::Configur
     }
 }
 
-pub async fn get_job(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::Job, Error<GetJobError>> {
+pub async fn get_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Job, Error<GetJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -298,13 +346,25 @@ pub async fn get_job_allocations(configuration: &configuration::Configuration, j
     }
 }
 
-pub async fn get_job_deployments(configuration: &configuration::Configuration, job_id: &str, all: Option<bool>) -> Result<Vec<crate::models::Deployment>, Error<GetJobDeploymentsError>> {
+pub async fn get_job_deployments(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, all: Option<bool>) -> Result<Vec<crate::models::Deployment>, Error<GetJobDeploymentsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/deployments", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = all {
         local_var_req_builder = local_var_req_builder.query(&[("all", &local_var_str.to_string())]);
     }
@@ -327,13 +387,25 @@ pub async fn get_job_deployments(configuration: &configuration::Configuration, j
     }
 }
 
-pub async fn get_job_evaluations(configuration: &configuration::Configuration, job_id: &str) -> Result<Vec<crate::models::Evaluation>, Error<GetJobEvaluationsError>> {
+pub async fn get_job_evaluations(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<crate::models::Evaluation>, Error<GetJobEvaluationsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/evaluations", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -353,13 +425,25 @@ pub async fn get_job_evaluations(configuration: &configuration::Configuration, j
     }
 }
 
-pub async fn get_job_latest_deployment(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::Deployment, Error<GetJobLatestDeploymentError>> {
+pub async fn get_job_latest_deployment(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::Deployment, Error<GetJobLatestDeploymentError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/deployment", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -379,13 +463,25 @@ pub async fn get_job_latest_deployment(configuration: &configuration::Configurat
     }
 }
 
-pub async fn get_job_scale_status(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::JobScaleStatusResponse, Error<GetJobScaleStatusError>> {
+pub async fn get_job_scale_status(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::JobScaleStatusResponse, Error<GetJobScaleStatusError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/scale", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -405,13 +501,25 @@ pub async fn get_job_scale_status(configuration: &configuration::Configuration, 
     }
 }
 
-pub async fn get_job_summary(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::JobSummary, Error<GetJobSummaryError>> {
+pub async fn get_job_summary(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::JobSummary, Error<GetJobSummaryError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/summary", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -431,13 +539,25 @@ pub async fn get_job_summary(configuration: &configuration::Configuration, job_i
     }
 }
 
-pub async fn get_job_versions(configuration: &configuration::Configuration, job_id: &str) -> Result<crate::models::JobVersionsResponse, Error<GetJobVersionsError>> {
+pub async fn get_job_versions(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<crate::models::JobVersionsResponse, Error<GetJobVersionsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/versions", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -457,13 +577,25 @@ pub async fn get_job_versions(configuration: &configuration::Configuration, job_
     }
 }
 
-pub async fn get_jobs(configuration: &configuration::Configuration, prefix: Option<&str>) -> Result<Vec<crate::models::JobListStub>, Error<GetJobsError>> {
+pub async fn get_jobs(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, prefix: Option<&str>) -> Result<Vec<crate::models::JobListStub>, Error<GetJobsError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/jobs", configuration.base_path);
     let mut local_var_req_builder = local_var_client.get(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = prefix {
         local_var_req_builder = local_var_req_builder.query(&[("prefix", &local_var_str.to_string())]);
     }
@@ -486,13 +618,25 @@ pub async fn get_jobs(configuration: &configuration::Configuration, prefix: Opti
     }
 }
 
-pub async fn parse_job_hcl(configuration: &configuration::Configuration, jobs_parse_request: Option<crate::models::JobsParseRequest>) -> Result<crate::models::Job, Error<ParseJobHclError>> {
+pub async fn parse_job_hcl(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, jobs_parse_request: Option<crate::models::JobsParseRequest>) -> Result<crate::models::Job, Error<ParseJobHclError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/jobs/parse", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -513,13 +657,25 @@ pub async fn parse_job_hcl(configuration: &configuration::Configuration, jobs_pa
     }
 }
 
-pub async fn plan_job(configuration: &configuration::Configuration, job_id: &str, job_plan_request: Option<crate::models::JobPlanRequest>) -> Result<crate::models::JobPlanResponse, Error<PlanJobError>> {
+pub async fn plan_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_plan_request: Option<crate::models::JobPlanRequest>) -> Result<crate::models::JobPlanResponse, Error<PlanJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/plan", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -567,13 +723,25 @@ pub async fn register_job(configuration: &configuration::Configuration, register
     }
 }
 
-pub async fn revert_job(configuration: &configuration::Configuration, job_id: &str, job_revert_request: Option<crate::models::JobRevertRequest>) -> Result<crate::models::JobRegisterResponse, Error<RevertJobError>> {
+pub async fn revert_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_revert_request: Option<crate::models::JobRevertRequest>) -> Result<crate::models::JobRegisterResponse, Error<RevertJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/revert", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -621,13 +789,25 @@ pub async fn scale_task_group(configuration: &configuration::Configuration, job_
     }
 }
 
-pub async fn set_job_stability(configuration: &configuration::Configuration, job_id: &str, job_stability_request: Option<crate::models::JobStabilityRequest>) -> Result<crate::models::JobStabilityResponse, Error<SetJobStabilityError>> {
+pub async fn set_job_stability(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_stability_request: Option<crate::models::JobStabilityRequest>) -> Result<crate::models::JobStabilityResponse, Error<SetJobStabilityError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/stable", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -704,13 +884,25 @@ pub async fn update_job(configuration: &configuration::Configuration, job_id: &s
     }
 }
 
-pub async fn validate_job(configuration: &configuration::Configuration, job_validate_request: Option<crate::models::JobValidateRequest>) -> Result<crate::models::JobValidateResponse, Error<ValidateJobError>> {
+pub async fn validate_job(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, job_validate_request: Option<crate::models::JobValidateRequest>) -> Result<crate::models::JobValidateResponse, Error<ValidateJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/validate/job", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

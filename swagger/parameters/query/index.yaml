@@ -1,0 +1,7 @@
+name: index
+in: query
+description: index used for blocking requests
+required: false
+schema:
+  type: integer
+  format: int64

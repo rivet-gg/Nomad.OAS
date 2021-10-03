@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## get_allocations_for_evaluation
 
-> Vec<crate::models::AllocationListStub> get_allocations_for_evaluation(eval_id)
+> Vec<crate::models::AllocationListStub> get_allocations_for_evaluation(eval_id, namespace, region, index, wait)
 lists the allocations created or modified for the given evaluation
 
 ### Parameters
@@ -21,6 +21,10 @@ lists the allocations created or modified for the given evaluation
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **eval_id** | **String** | Specifies the UUID of the evaluation. This must be the full UUID, not the short 8-character one. This is specified as part of the path | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -40,7 +44,7 @@ No authorization required
 
 ## get_evaluation
 
-> crate::models::Evaluation get_evaluation(eval_id)
+> crate::models::Evaluation get_evaluation(eval_id, namespace, region, index, wait)
 reads information about a specific evaluation by ID
 
 ### Parameters
@@ -49,6 +53,10 @@ reads information about a specific evaluation by ID
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **eval_id** | **String** | Specifies the UUID of the evaluation. This must be the full UUID, not the short 8-character one. This is specified as part of the path | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -68,7 +76,7 @@ No authorization required
 
 ## get_evaluations
 
-> Vec<crate::models::Evaluation> get_evaluations(prefix)
+> Vec<crate::models::Evaluation> get_evaluations(namespace, region, index, wait, prefix)
 lists all evaluations
 
 ### Parameters
@@ -76,6 +84,10 @@ lists all evaluations
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **prefix** | Option<**String**> | Specifies a string to filter jobs on based on an index prefix. This is specified as a query string parameter |  |
 
 ### Return type

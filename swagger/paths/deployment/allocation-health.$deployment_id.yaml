@@ -5,6 +5,11 @@ post:
   tags:
     - deployments
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/path/deployment_id.yaml'
   requestBody:
     content:
