@@ -160,7 +160,7 @@ No authorization required
 
 ## get_job_allocations
 
-> Vec<crate::models::AllocationListStub> get_job_allocations(job_id, all)
+> Vec<crate::models::AllocationListStub> get_job_allocations(job_id, namespace, region, index, wait, all)
 reads information about a single job's allocations
 
 ### Parameters
@@ -169,6 +169,10 @@ reads information about a single job's allocations
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **all** | Option<**bool**> | Specifies whether should include * from a previously registered job with the same ID. This is possible if the job is deregistered and reregistered. |  |
 
 ### Return type
