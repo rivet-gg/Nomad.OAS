@@ -18,6 +18,11 @@ post:
   tags:
     - agent
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/query/addresses.yaml'
   responses:
     '200':

@@ -25,6 +25,11 @@ put:
   tags:
     - volumes
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/path/volume_id.yaml'
   requestBody:
     content:
@@ -42,6 +47,11 @@ delete:
   tags:
     - volumes
   parameters:
+    - $ref: '../../parameters/query/namespace.yaml'
+    - $ref: '../../parameters/query/region.yaml'
+    - $ref: '../../parameters/query/index.yaml'
+    - $ref: '../../parameters/query/wait.yaml'
+
     - $ref: '../../parameters/path/volume_id.yaml'
   responses:
     '200':
