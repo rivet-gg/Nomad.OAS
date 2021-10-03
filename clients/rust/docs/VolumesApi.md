@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## deregister_volume
 
-> deregister_volume(volume_id)
+> deregister_volume(volume_id, namespace, region, index, wait)
 deregisters an external volume with Nomad. It is an error to deregister a volume that is in use
 
 ### Parameters
@@ -22,6 +22,10 @@ deregisters an external volume with Nomad. It is an error to deregister a volume
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **volume_id** | **String** | Specifies the ID of the volume. This must be the full ID. This is specified as part of the path | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 
@@ -107,7 +111,7 @@ No authorization required
 
 ## register_volume
 
-> register_volume(volume_id, csi_volume_register_request)
+> register_volume(volume_id, namespace, region, index, wait, csi_volume_register_request)
 registers an external volume with Nomad. It is an error to register an existing volume
 
 ### Parameters
@@ -116,6 +120,10 @@ registers an external volume with Nomad. It is an error to register an existing 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **volume_id** | **String** | Specifies the ID of the volume. This must be the full ID. This is specified as part of the path | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **csi_volume_register_request** | Option<[**CsiVolumeRegisterRequest**](CsiVolumeRegisterRequest.md)> |  |  |
 
 ### Return type

@@ -235,7 +235,7 @@ No authorization required
 
 ## update_servers
 
-> Vec<String> update_servers(address)
+> Vec<String> update_servers(address, namespace, region, index, wait)
 Updates the list of known servers to the given addresses, replacing all previous addresses
 
 ### Parameters
@@ -244,6 +244,10 @@ Updates the list of known servers to the given addresses, replacing all previous
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **address** | [**Vec<String>**](String.md) | server address (ip:port) | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 
 ### Return type
 

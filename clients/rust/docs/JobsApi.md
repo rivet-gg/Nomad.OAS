@@ -479,7 +479,7 @@ No authorization required
 
 ## register_job
 
-> crate::models::JobRegisterResponse register_job(register_job_request)
+> crate::models::JobRegisterResponse register_job(namespace, region, index, wait, register_job_request)
 creates (aka \"registers\") a new job in the system
 
 ### Parameters
@@ -487,6 +487,10 @@ creates (aka \"registers\") a new job in the system
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **register_job_request** | Option<[**RegisterJobRequest**](RegisterJobRequest.md)> |  |  |
 
 ### Return type
@@ -540,7 +544,7 @@ No authorization required
 
 ## scale_task_group
 
-> crate::models::JobRegisterResponse scale_task_group(job_id, scaling_request)
+> crate::models::JobRegisterResponse scale_task_group(job_id, namespace, region, index, wait, scaling_request)
 performs a scaling action against a job. Currently, this endpoint supports scaling the count for a task group
 
 ### Parameters
@@ -549,6 +553,10 @@ performs a scaling action against a job. Currently, this endpoint supports scali
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **scaling_request** | Option<[**ScalingRequest**](ScalingRequest.md)> |  |  |
 
 ### Return type
@@ -602,7 +610,7 @@ No authorization required
 
 ## stop_job
 
-> crate::models::JobDeregisterResponse stop_job(job_id, purge)
+> crate::models::JobDeregisterResponse stop_job(job_id, namespace, region, index, wait, purge)
 deregisters a job, and stops all allocations part of it
 
 ### Parameters
@@ -611,6 +619,10 @@ deregisters a job, and stops all allocations part of it
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **purge** | Option<**bool**> | Specifies that the job should stopped and purged immediately. This means the job will not be queryable after being stopped. If not set, the job will be purged by the garbage collector |  |
 
 ### Return type
@@ -631,7 +643,7 @@ No authorization required
 
 ## update_job
 
-> crate::models::JobRegisterResponse update_job(job_id, register_job_request)
+> crate::models::JobRegisterResponse update_job(job_id, namespace, region, index, wait, register_job_request)
 registers a new job or updates an existing job
 
 ### Parameters
@@ -640,6 +652,10 @@ registers a new job or updates an existing job
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **job_id** | **String** | job id | [required] |
+**namespace** | Option<**String**> |  |  |
+**region** | Option<**String**> | Make a request across regions to the given region |  |
+**index** | Option<**i64**> | index used for blocking requests |  |
+**wait** | Option<**String**> | wait time used for blocking requests |  |
 **register_job_request** | Option<[**RegisterJobRequest**](RegisterJobRequest.md)> |  |  |
 
 ### Return type

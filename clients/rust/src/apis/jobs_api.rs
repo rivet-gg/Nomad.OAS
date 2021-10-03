@@ -696,13 +696,25 @@ pub async fn plan_job(configuration: &configuration::Configuration, job_id: &str
     }
 }
 
-pub async fn register_job(configuration: &configuration::Configuration, register_job_request: Option<crate::models::RegisterJobRequest>) -> Result<crate::models::JobRegisterResponse, Error<RegisterJobError>> {
+pub async fn register_job(configuration: &configuration::Configuration, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, register_job_request: Option<crate::models::RegisterJobRequest>) -> Result<crate::models::JobRegisterResponse, Error<RegisterJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/jobs", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -762,13 +774,25 @@ pub async fn revert_job(configuration: &configuration::Configuration, job_id: &s
     }
 }
 
-pub async fn scale_task_group(configuration: &configuration::Configuration, job_id: &str, scaling_request: Option<crate::models::ScalingRequest>) -> Result<crate::models::JobRegisterResponse, Error<ScaleTaskGroupError>> {
+pub async fn scale_task_group(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, scaling_request: Option<crate::models::ScalingRequest>) -> Result<crate::models::JobRegisterResponse, Error<ScaleTaskGroupError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}/scale", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -828,13 +852,25 @@ pub async fn set_job_stability(configuration: &configuration::Configuration, job
     }
 }
 
-pub async fn stop_job(configuration: &configuration::Configuration, job_id: &str, purge: Option<bool>) -> Result<crate::models::JobDeregisterResponse, Error<StopJobError>> {
+pub async fn stop_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, purge: Option<bool>) -> Result<crate::models::JobDeregisterResponse, Error<StopJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.delete(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_str) = purge {
         local_var_req_builder = local_var_req_builder.query(&[("purge", &local_var_str.to_string())]);
     }
@@ -857,13 +893,25 @@ pub async fn stop_job(configuration: &configuration::Configuration, job_id: &str
     }
 }
 
-pub async fn update_job(configuration: &configuration::Configuration, job_id: &str, register_job_request: Option<crate::models::RegisterJobRequest>) -> Result<crate::models::JobRegisterResponse, Error<UpdateJobError>> {
+pub async fn update_job(configuration: &configuration::Configuration, job_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, register_job_request: Option<crate::models::RegisterJobRequest>) -> Result<crate::models::JobRegisterResponse, Error<UpdateJobError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/job/{job_id}", configuration.base_path, job_id=crate::apis::urlencode(job_id));
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }

@@ -343,13 +343,25 @@ pub async fn stream_logs(configuration: &configuration::Configuration, namespace
     }
 }
 
-pub async fn update_servers(configuration: &configuration::Configuration, address: Vec<String>) -> Result<Vec<String>, Error<UpdateServersError>> {
+pub async fn update_servers(configuration: &configuration::Configuration, address: Vec<String>, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<Vec<String>, Error<UpdateServersError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/agent/servers", configuration.base_path);
     let mut local_var_req_builder = local_var_client.post(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     local_var_req_builder = local_var_req_builder.query(&[("address", &address.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]);
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());

@@ -44,13 +44,25 @@ pub enum RegisterVolumeError {
 }
 
 
-pub async fn deregister_volume(configuration: &configuration::Configuration, volume_id: &str) -> Result<(), Error<DeregisterVolumeError>> {
+pub async fn deregister_volume(configuration: &configuration::Configuration, volume_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>) -> Result<(), Error<DeregisterVolumeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/volume/csi/{volume_id}", configuration.base_path, volume_id=crate::apis::urlencode(volume_id));
     let mut local_var_req_builder = local_var_client.delete(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
@@ -155,13 +167,25 @@ pub async fn get_volumes(configuration: &configuration::Configuration, namespace
     }
 }
 
-pub async fn register_volume(configuration: &configuration::Configuration, volume_id: &str, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>) -> Result<(), Error<RegisterVolumeError>> {
+pub async fn register_volume(configuration: &configuration::Configuration, volume_id: &str, namespace: Option<&str>, region: Option<&str>, index: Option<i64>, wait: Option<&str>, csi_volume_register_request: Option<crate::models::CsiVolumeRegisterRequest>) -> Result<(), Error<RegisterVolumeError>> {
 
     let local_var_client = &configuration.client;
 
     let local_var_uri_str = format!("{}/volume/csi/{volume_id}", configuration.base_path, volume_id=crate::apis::urlencode(volume_id));
     let mut local_var_req_builder = local_var_client.put(local_var_uri_str.as_str());
 
+    if let Some(ref local_var_str) = namespace {
+        local_var_req_builder = local_var_req_builder.query(&[("namespace", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = region {
+        local_var_req_builder = local_var_req_builder.query(&[("region", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = index {
+        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    }
+    if let Some(ref local_var_str) = wait {
+        local_var_req_builder = local_var_req_builder.query(&[("wait", &local_var_str.to_string())]);
+    }
     if let Some(ref local_var_user_agent) = configuration.user_agent {
         local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
     }
