@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**provider** | Option<**String**> |  | [optional]
 **ID** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **tags** | Option<**Vec<String>**> |  | [optional]

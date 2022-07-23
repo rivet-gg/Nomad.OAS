@@ -1,6 +1,8 @@
 type: object
 nullable: true
 properties:
+  Provider:
+    type: string
   ID:
     type: string
   Name:
