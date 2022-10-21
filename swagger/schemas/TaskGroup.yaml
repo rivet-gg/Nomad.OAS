@@ -62,3 +62,9 @@ properties:
     nullable: true
   Scaling:
     $ref: './ScalingPolicy.yaml'
+  StopAfterClientDisconnect:
+    type: string
+    nullable: true
+  MaxClientDisconnect:
+    type: string
+    nullable: true
