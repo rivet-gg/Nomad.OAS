@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **services** | Option<[**Vec<crate::models::Service>**](Service.md)> |  | [optional]
 **shutdown_delay** | Option<**i64**> |  | [optional]
 **scaling** | Option<[**crate::models::ScalingPolicy**](ScalingPolicy.md)> |  | [optional]
+**stop_after_client_disconnect** | Option<**String**> |  | [optional]
+**max_client_disconnect** | Option<**String**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

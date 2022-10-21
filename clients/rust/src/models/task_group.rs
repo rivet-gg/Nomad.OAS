@@ -47,6 +47,10 @@ pub struct TaskGroup {
     pub shutdown_delay: Option<i64>,
     #[serde(rename = "Scaling", skip_serializing_if = "Option::is_none")]
     pub scaling: Option<Box<crate::models::ScalingPolicy>>,
+    #[serde(rename = "StopAfterClientDisconnect", skip_serializing_if = "Option::is_none")]
+    pub stop_after_client_disconnect: Option<String>,
+    #[serde(rename = "MaxClientDisconnect", skip_serializing_if = "Option::is_none")]
+    pub max_client_disconnect: Option<String>,
 }
 
 impl TaskGroup {
@@ -69,6 +73,8 @@ impl TaskGroup {
             services: None,
             shutdown_delay: None,
             scaling: None,
+            stop_after_client_disconnect: None,
+            max_client_disconnect: None,
         }
     }
 }
