@@ -63,8 +63,11 @@ properties:
   Scaling:
     $ref: './ScalingPolicy.yaml'
   StopAfterClientDisconnect:
-    type: string
+    type: integer
+    format: int64
     nullable: true
   MaxClientDisconnect:
-    type: string
+    type: integer
+    format: int64
     nullable: true
+
