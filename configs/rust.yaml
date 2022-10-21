@@ -4,7 +4,7 @@ templateDir: "/local/templates/rust"
 additionalProperties:
   supportAsync: true
   packageName: nomad-client
-  packageVersion: 0.0.7
+  packageVersion: 0.0.8
   packageDescription: "A Rust client for HashiCorp Nomad's API."
   packageHomepage: "https://github.com/rivet-gg/Nomad.OAS/tree/master/clients/rust"
   packageRepository: "https://github.com/rivet-gg/Nomad.OAS"
