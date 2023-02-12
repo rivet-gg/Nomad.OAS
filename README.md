@@ -1,6 +1,10 @@
 # Nomad.OAS
 HashiCorp Nomad v0.11 OpenAPI specification.
 
+## 🚨 Deprecated 🚨
+
+HashiCorp published their official OpenAPI spec with generated Rust clients available [here](https://github.com/hashicorp/nomad-openapi/tree/main/clients/rust).
+
 ## Client libraries (generated)
 
 ### Rust
