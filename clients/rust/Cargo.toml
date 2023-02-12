@@ -1,7 +1,7 @@
 [package]
 name = "nomad-client"
-version = "0.0.9"
-description = "A Rust client for HashiCorp Nomad's API."
+version = "0.0.10"
+description = "[Deprecated] A Rust client for HashiCorp Nomad's API."
 homepage = "https://github.com/rivet-gg/Nomad.OAS/tree/master/clients/rust"
 repository = "https://github.com/rivet-gg/Nomad.OAS"
 keywords = [
